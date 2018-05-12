@@ -11,3 +11,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Docker
 
+Docker containers are becoming essential for software development and for the deployment of complex computing environments. This talk presents two Docker solutions to address these and other use cases relevant to statisticians and data scientists.
+
+- Rocker: a suite of R-based images built by and hosted on Docker Hab
+
+- RSpark: a suite of Spark-based images built by and hosted on Docker Hub
+
+Perhaps the most important reason for using Docker by statisticians and data scientists is the complexity of their computing environments, e.g., aligning version numbers for R and its packages, drivers, SQL and NoSQL databases, Spark and it packages, etc.
+
+## What is Docker?
+
