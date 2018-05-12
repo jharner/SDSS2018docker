@@ -1,0 +1,13 @@
+---
+title: "Building Data Science Platforms Using Docker"
+author: "Jim Harner"
+date: "5/6/18"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Docker
+
