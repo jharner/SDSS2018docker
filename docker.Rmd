@@ -1,5 +1,5 @@
 ---
-title: "Building Data Science Platforms Using Docker"
+title: "SDSS 2018: Building Data Science Platforms Using Docker"
 author: "Jim Harner"
 date: "May 18, 2018"
 output: slidy_presentation
@@ -11,11 +11,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Docker
 
-Docker containers are becoming essential for software development and for the deployment of complex computing environments. This talk presents two Docker solutions to address these and other use cases relevant to statisticians and data scientists.
+Docker containers are becoming essential for software development and for the deployment of complex computing environments. This talk presents three Docker solutions to address these and other use cases relevant to statisticians and data scientists.
 
-- Rocker: a suite of R-based images built by and hosted on Docker Hab
+- Rocker: a suite of R-based Docker images built by and hosted on Docker Hab
 
-- RSpark: a suite of Spark-based images hosted on Docker Hub
+- RSpark: a suite of Spark-based Docker images hosted on Docker Hub
+
+- Rc$^2$: a graphical frontend and environment for running R in contaners
 
 Perhaps the most important reason for using Docker by statisticians and data scientists is the complexity of their computing environments, e.g., aligning version numbers for R and its packages, drivers, SQL and NoSQL databases, Hadoop, Spark and its packages, etc.
 
@@ -51,9 +53,9 @@ You can run an image by:
 ```
 docker run hello-world
 ```
-or more ambitiously:
+or run rstudio by:
 ```
-docker run --rm -ti rocker/r-base bash
+sudo docker run -p 8787:8787 -e PASSWORD=<PICK-A-PASSWORD> rocker/rstudio
 ```
 
 ## A Modern Data Science Platform
@@ -75,6 +77,40 @@ The most important to us are:
     + verse: adds tex and publishing packages    
 * shiny  
 * ml  
+
+## RSpark Project
+
+RSpark is a GiTHub project with images stored on Doctor Hub. The current containers for RSpark are:
+
+- rstudio: main contaner with R, RStudio, and a single node version of Spark (depends on hadoop and hive)
+
+- postgres: container with PostgresSQL
+
+- hadoop: conatianer with HDFS, MapReduce, etc.
+
+- hive: container with the Hive data warehouse (depends on hadoop)
+
+- spark: a master container and two or more worker containers (depending on the master)
+
+Images are built with a Dockerfile. The `docker-compose` file controls the builds and the relationships among the containers.
+
+For details of the Dockerfile for each of the containers see jharner/rspark on github.com.
+
+## Rc$^2$ Project
+
+Rc$^2$ is a GitHub project. The current server-side containers are:
+
+- App Server: communicates with the client, the Compute Server, and the Database server
+
+- Compute Server: runs R and communicate with the App Server and the Database Server
+
+- Database Server: hosts a PostgreSQL database
+
+## Rc$^2$ Components
+
+![](docker-figures/RC2Components.pdf)
+
+
 
 
 
